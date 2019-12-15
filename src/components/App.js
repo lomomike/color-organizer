@@ -1,65 +1,49 @@
-import { Component } from 'react'
-import { v4 } from 'uuid'
-import AddColorForm from './AddColorForm'
-import ColorList from './ColorList'
 import '../../stylesheets/APP.scss'
+import { Component } from 'react'
+import PropTypes from 'prop-types'
+import SortMenu from './SortMenu'
+import ColorList from './ColorList'
+import AddColorForm from './AddColorForm'
+import { sortFunction } from '../lib/array-helpers'
 
-export default class App extends Component {
+class App extends Component {
 
-    constructor(props) {
-        super(props)
-        this.state = {
-            colors: []
+    getChildContext() {
+        return {
+            store: this.props.store
         }
-        this.addColor = this.addColor.bind(this)
-        this.rateColor = this.rateColor.bind(this)
-        this.removeColor = this.removeColor.bind(this)
     }
 
-    addColor(title, color) {
-        this.setState(prevState => ({
-            colors: [
-                ...prevState.colors,
-                {
-                    id: v4(),
-                    title,
-                    color,
-                    rating: 0
-                }
-            ]
-        }))
+    componentWillMount() {
+        this.unsubscribe = store.subscribe(
+            () => this.forceUpdate()
+        )
     }
 
-    rateColor(id, rating) {
-        this.setState(prevState => ({
-            colors: prevState.colors.map(color =>
-                (color.id !== id) ?
-                    color :
-                    {
-                        ...color,
-                        rating
-                    }
-            )
-        }))
-    }
-
-    removeColor(id) {
-        this.setState(prevState => ({
-          colors: prevState.colors.filter(color => color.id !== id)
-        }))
+    componentWillUnmount() {
+        this.unsubscribe()
     }
 
     render() {
-        const { addColor, rateColor, removeColor } = this
-        const { colors } = this.state
+        const { colors, sort } = store.getState()
+        const sortedColors = [...colors].sort(sortFunction(sort))
         return (
             <div className="app">
-                <AddColorForm onNewColor={addColor} />
-                <ColorList colors={colors}
-                           onRate={rateColor}
-                           onRemove={removeColor} />
+                <SortMenu />
+                <AddColorForm />
+                <ColorList colors={sortedColors} />
             </div>
         )
     }
 
 }
+
+App.propTypes = {
+    store: PropTypes.object.isRequired
+}
+
+App.childContextTypes = {
+    store: PropTypes.object.isRequired
+}
+
+export default App

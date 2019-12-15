@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types'
 import '../../stylesheets/Star.scss'
+import PropTypes from 'prop-types'
 
 const Star = ({ selected=false, onClick=f=>f }) =>
     <div className={(selected) ? "star selected" : "star"}
