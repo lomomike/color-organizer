@@ -1,5 +1,6 @@
 var webpack = require("webpack")
 var path = require("path")
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 process.noDeprecation = true
 
@@ -49,5 +50,8 @@ module.exports = {
         })
        
     ],
-    mode: 'development'
+    optimization: {
+      minimizer: [new UglifyJsPlugin()],
+    },
+    mode: 'production'
 }
