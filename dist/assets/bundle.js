@@ -15098,7 +15098,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _StarRating__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./StarRating */ "./src/components/ui/StarRating.js");
+/* harmony import */ var _StarRating__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./StarRating */ "./src/components/ui/StarRating.tsx");
 /* harmony import */ var _TimeAgo__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./TimeAgo */ "./src/components/ui/TimeAgo.tsx");
 /* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-icons/fa */ "./node_modules/react-icons/fa/index.esm.js");
 /* harmony import */ var _stylesheets_Color_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../stylesheets/Color.scss */ "./stylesheets/Color.scss");
@@ -15368,57 +15368,29 @@ const Star = (props) => react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div
 
 /***/ }),
 
-/***/ "./src/components/ui/StarRating.js":
-/*!*****************************************!*\
-  !*** ./src/components/ui/StarRating.js ***!
-  \*****************************************/
+/***/ "./src/components/ui/StarRating.tsx":
+/*!******************************************!*\
+  !*** ./src/components/ui/StarRating.tsx ***!
+  \******************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _Star__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Star */ "./src/components/ui/Star.tsx");
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
-
-function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
 
 
-
-
-var StarRating = function StarRating(_ref) {
-  var _ref$starsSelected = _ref.starsSelected,
-      starsSelected = _ref$starsSelected === void 0 ? 0 : _ref$starsSelected,
-      _ref$totalStars = _ref.totalStars,
-      totalStars = _ref$totalStars === void 0 ? 5 : _ref$totalStars,
-      _ref$onRate = _ref.onRate,
-      onRate = _ref$onRate === void 0 ? function (f) {
-    return f;
-  } : _ref$onRate;
-  return React.createElement("div", {
-    className: "star-rating"
-  }, _toConsumableArray(Array(totalStars)).map(function (n, i) {
-    return React.createElement(_Star__WEBPACK_IMPORTED_MODULE_1__["Star"], {
-      key: i,
-      selected: i < starsSelected,
-      onClick: function onClick() {
-        return onRate(i + 1);
-      }
-    });
-  }), React.createElement("p", null, starsSelected, " of ", totalStars, " stars"));
-};
-
-StarRating.propTypes = {
-  starsSelected: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.number,
-  totalStars: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.number,
-  onRate: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.func
-};
+const StarRating = ({ starsSelected = 0, totalStars = 5, onRate = (f) => f }) => react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "star-rating" },
+    [...Array(totalStars)].map((n, i) => react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_Star__WEBPACK_IMPORTED_MODULE_1__["Star"], { key: i, selected: i < starsSelected, onClick: () => onRate(i + 1) })),
+    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", null,
+        starsSelected,
+        " of ",
+        totalStars,
+        " stars"));
 /* harmony default export */ __webpack_exports__["default"] = (StarRating);
+
 
 /***/ }),
 
