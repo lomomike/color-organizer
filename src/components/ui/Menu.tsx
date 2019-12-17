@@ -1,4 +1,5 @@
-import PropTypes from 'prop-types'
+import * as PropTypes from 'prop-types'
+import * as React from 'react'
 import { NavLink } from 'react-router-dom'
 import '../../../stylesheets/Menu.scss'
 

@@ -14887,7 +14887,7 @@ var rateColor = function rateColor(id, rating) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _ui_Menu__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ui/Menu */ "./src/components/ui/Menu.js");
+/* harmony import */ var _ui_Menu__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ui/Menu */ "./src/components/ui/Menu.tsx");
 /* harmony import */ var _ui_Whoops404__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ui/Whoops404 */ "./src/components/ui/Whoops404.tsx");
 /* harmony import */ var _containers__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./containers */ "./src/components/containers.js");
 /* harmony import */ var _stylesheets_APP_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../stylesheets/APP.scss */ "./stylesheets/APP.scss");
@@ -15279,10 +15279,10 @@ ColorList.propTypes = {
 
 /***/ }),
 
-/***/ "./src/components/ui/Menu.js":
-/*!***********************************!*\
-  !*** ./src/components/ui/Menu.js ***!
-  \***********************************/
+/***/ "./src/components/ui/Menu.tsx":
+/*!************************************!*\
+  !*** ./src/components/ui/Menu.tsx ***!
+  \************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -15290,36 +15290,25 @@ ColorList.propTypes = {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
-/* harmony import */ var _stylesheets_Menu_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../stylesheets/Menu.scss */ "./stylesheets/Menu.scss");
-/* harmony import */ var _stylesheets_Menu_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_stylesheets_Menu_scss__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _stylesheets_Menu_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../stylesheets/Menu.scss */ "./stylesheets/Menu.scss");
+/* harmony import */ var _stylesheets_Menu_scss__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_stylesheets_Menu_scss__WEBPACK_IMPORTED_MODULE_3__);
 
 
 
-var selectedStyle = {
-  color: 'red'
-};
 
-var Menu = function Menu(_ref) {
-  var match = _ref.match;
-  return React.createElement("nav", {
-    className: "menu"
-  }, React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
-    to: "/",
-    style: match.isExact && selectedStyle
-  }, "date"), React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
-    to: "/sort/title",
-    activeStyle: selectedStyle
-  }, "title"), React.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["NavLink"], {
-    to: "/sort/rating",
-    activeStyle: selectedStyle
-  }, "rating"));
-};
-
+const selectedStyle = { color: 'red' };
+const Menu = ({ match }) => react__WEBPACK_IMPORTED_MODULE_1__["createElement"]("nav", { className: "menu" },
+    react__WEBPACK_IMPORTED_MODULE_1__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["NavLink"], { to: "/", style: match.isExact && selectedStyle }, "date"),
+    react__WEBPACK_IMPORTED_MODULE_1__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["NavLink"], { to: "/sort/title", activeStyle: selectedStyle }, "title"),
+    react__WEBPACK_IMPORTED_MODULE_1__["createElement"](react_router_dom__WEBPACK_IMPORTED_MODULE_2__["NavLink"], { to: "/sort/rating", activeStyle: selectedStyle }, "rating"));
 Menu.propTypes = {
-  sort: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.string
+    sort: prop_types__WEBPACK_IMPORTED_MODULE_0__["string"]
 };
 /* harmony default export */ __webpack_exports__["default"] = (Menu);
+
 
 /***/ }),
 
