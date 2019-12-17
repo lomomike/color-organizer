@@ -1,0 +1,1 @@
+export function ago(timestamp: string): string
