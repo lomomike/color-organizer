@@ -1,6 +1,15 @@
-import PropTypes from 'prop-types'
-import Whoops404 from './Whoops404'
+import * as PropTypes from 'prop-types'
+import * as React from 'react'
+import { Whoops404, Location } from './Whoops404'
 import '../../../stylesheets/ColorDetails.scss'
+import { History } from 'history'
+
+interface ColorDetailsProps {
+    title : string
+    color : string
+    history: History,
+    location: Location
+}
 
 const ColorDetails = ({ title, color, history, location }) =>
     (!color) ?

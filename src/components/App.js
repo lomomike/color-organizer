@@ -1,6 +1,6 @@
 import { Route, Switch } from 'react-router-dom'
 import Menu from './ui/Menu'
-import Whoops404 from './ui/Whoops404'
+import { Whoops404 } from './ui/Whoops404'
 import { Colors, Color, NewColor } from './containers'
 import '../../stylesheets/APP.scss'
 
