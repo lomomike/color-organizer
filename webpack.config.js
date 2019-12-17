@@ -11,11 +11,13 @@ module.exports = {
         sourceMapFilename: 'bundle.map'
     },
     devtool: '#source-map',
+    resolve: {
+      extensions: ['.ts', '.tsx', '.js', '.jsx', '.json']
+    },
     module: {
         rules: [
             {
-              test: /\.(js|jsx)$/,
-              
+              test: /\.(js|jsx)$/,              
               exclude: /node_modules/,
               use: {
                 loader: 'babel-loader',
@@ -23,6 +25,15 @@ module.exports = {
                     presets: ['@babel/preset-env', '@babel/react']
                     }
                 }
+            },
+            {
+              test: /\.ts(x?)$/,
+              exclude: /node_modules/,
+              use: [
+                {
+                  loader: "ts-loader"
+                }
+              ]
             },
             {
               test: /\.css$/,

@@ -15347,40 +15347,24 @@ Menu.propTypes = {
 
 /***/ }),
 
-/***/ "./src/components/ui/Star.js":
-/*!***********************************!*\
-  !*** ./src/components/ui/Star.js ***!
-  \***********************************/
-/*! exports provided: default */
+/***/ "./src/components/ui/Star.tsx":
+/*!************************************!*\
+  !*** ./src/components/ui/Star.tsx ***!
+  \************************************/
+/*! exports provided: Star */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Star", function() { return Star; });
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _stylesheets_Star_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../stylesheets/Star.scss */ "./stylesheets/Star.scss");
 /* harmony import */ var _stylesheets_Star_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_stylesheets_Star_scss__WEBPACK_IMPORTED_MODULE_1__);
 
 
+const Star = (props) => react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: (props.selected) ? "star selected" : "star", onClick: props.onClick });
 
-var Star = function Star(_ref) {
-  var _ref$selected = _ref.selected,
-      selected = _ref$selected === void 0 ? false : _ref$selected,
-      _ref$onClick = _ref.onClick,
-      onClick = _ref$onClick === void 0 ? function (f) {
-    return f;
-  } : _ref$onClick;
-  return React.createElement("div", {
-    className: selected ? "star selected" : "star",
-    onClick: onClick
-  });
-};
-
-Star.propTypes = {
-  selected: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.bool,
-  onClick: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.func
-};
-/* harmony default export */ __webpack_exports__["default"] = (Star);
 
 /***/ }),
 
@@ -15395,7 +15379,7 @@ Star.propTypes = {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _Star__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Star */ "./src/components/ui/Star.js");
+/* harmony import */ var _Star__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Star */ "./src/components/ui/Star.tsx");
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
@@ -15419,7 +15403,7 @@ var StarRating = function StarRating(_ref) {
   return React.createElement("div", {
     className: "star-rating"
   }, _toConsumableArray(Array(totalStars)).map(function (n, i) {
-    return React.createElement(_Star__WEBPACK_IMPORTED_MODULE_1__["default"], {
+    return React.createElement(_Star__WEBPACK_IMPORTED_MODULE_1__["Star"], {
       key: i,
       selected: i < starsSelected,
       onClick: function onClick() {
