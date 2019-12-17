@@ -1,21 +1,32 @@
-import { Component } from 'react'
-import PropTypes from 'prop-types'
-import { withRouter } from 'react-router-dom'
+import * as React from 'react'
+import * as PropTypes from 'prop-types'
+import { withRouter, RouteComponentProps } from 'react-router-dom'
 import StarRating from './StarRating'
 import TimeAgo from './TimeAgo'
-import { FaTrash } from 'react-icons/fa'
 import '../../../stylesheets/Color.scss'
+import { History } from 'history'
 
-class Color extends Component {
+type ColorProps = RouteComponentProps<any> & {
+    id : any,
+    title: string,
+    color: string,
+    rating: number,
+    timestamp: string,
+    onRemove: any,
+    onRate: any,
+    history: History
+}
+
+class Color extends React.Component<ColorProps> {
 
     render() {
         const { id, title, color, rating, timestamp, onRemove, onRate, history } = this.props
         return (
-            <section className="color" style={this.style}>
+            <section className="color">
                 <h1 ref="title"
                     onClick={() => history.push(`/${id}`)}>{title}</h1>
-                <button onClick={onRemove}>
-                    <FaTrash />
+                <button onClick={() => onRemove()}>
+                    
                 </button>
                 <div className="color"
                      onClick={() => history.push(`/${id}`)}
@@ -29,20 +40,6 @@ class Color extends Component {
         )
     }
 
-}
-
-Color.propTypes = {
-    title: PropTypes.string.isRequired,
-    color: PropTypes.string.isRequired,
-    rating: PropTypes.number,
-    onRemove: PropTypes.func,
-    onRate: PropTypes.func
-}
-
-Color.defaultProps = {
-    rating: 0,
-    onRemove: f=>f,
-    onRate: f=>f
 }
 
 export default withRouter(Color)

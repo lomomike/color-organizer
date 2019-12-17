@@ -3,7 +3,7 @@ import { Star } from './Star'
 
 interface StarRatingProps {
     starsSelected : number,
-    totalStars : number,
+    totalStars? : number,
     onRate : any
 }
 
