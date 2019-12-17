@@ -14888,7 +14888,7 @@ var rateColor = function rateColor(id, rating) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _ui_Menu__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ui/Menu */ "./src/components/ui/Menu.js");
-/* harmony import */ var _ui_Whoops404__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ui/Whoops404 */ "./src/components/ui/Whoops404.js");
+/* harmony import */ var _ui_Whoops404__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ui/Whoops404 */ "./src/components/ui/Whoops404.tsx");
 /* harmony import */ var _containers__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./containers */ "./src/components/containers.js");
 /* harmony import */ var _stylesheets_APP_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../stylesheets/APP.scss */ "./stylesheets/APP.scss");
 /* harmony import */ var _stylesheets_APP_scss__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_stylesheets_APP_scss__WEBPACK_IMPORTED_MODULE_4__);
@@ -15213,7 +15213,7 @@ Color.defaultProps = {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _Whoops404__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Whoops404 */ "./src/components/ui/Whoops404.js");
+/* harmony import */ var _Whoops404__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Whoops404 */ "./src/components/ui/Whoops404.tsx");
 /* harmony import */ var _stylesheets_ColorDetails_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../stylesheets/ColorDetails.scss */ "./stylesheets/ColorDetails.scss");
 /* harmony import */ var _stylesheets_ColorDetails_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_stylesheets_ColorDetails_scss__WEBPACK_IMPORTED_MODULE_2__);
 
@@ -15445,23 +15445,25 @@ var TimeAgo = function TimeAgo(_ref) {
 
 /***/ }),
 
-/***/ "./src/components/ui/Whoops404.js":
-/*!****************************************!*\
-  !*** ./src/components/ui/Whoops404.js ***!
-  \****************************************/
+/***/ "./src/components/ui/Whoops404.tsx":
+/*!*****************************************!*\
+  !*** ./src/components/ui/Whoops404.tsx ***!
+  \*****************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-var Whoops404 = function Whoops404(_ref) {
-  var location = _ref.location;
-  return React.createElement("div", {
-    className: "whoops-404"
-  }, React.createElement("h1", null, "Whoops cannot find resource at '", location.pathname, "'"));
-};
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 
+const Whoops404 = (props) => react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "whoops-404" },
+    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("h1", null,
+        "Whoops cannot find resource at '",
+        props.location.pathname,
+        "'"));
 /* harmony default export */ __webpack_exports__["default"] = (Whoops404);
+
 
 /***/ }),
 
