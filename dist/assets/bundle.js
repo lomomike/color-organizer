@@ -14941,7 +14941,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Colors", function() { return Colors; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Color", function() { return Color; });
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _ui_ColorList__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ui/ColorList */ "./src/components/ui/ColorList.js");
+/* harmony import */ var _ui_ColorList__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ui/ColorList */ "./src/components/ui/ColorList.tsx");
 /* harmony import */ var _ui_ColorDetails__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ui/ColorDetails */ "./src/components/ui/ColorDetails.js");
 /* harmony import */ var _ui_AddColorForm__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ui/AddColorForm */ "./src/components/ui/AddColorForm.js");
 /* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../actions */ "./src/actions.js");
@@ -15246,60 +15246,36 @@ ColorDetails.propTypes = {
 
 /***/ }),
 
-/***/ "./src/components/ui/ColorList.js":
-/*!****************************************!*\
-  !*** ./src/components/ui/ColorList.js ***!
-  \****************************************/
+/***/ "./src/components/ui/ColorList.tsx":
+/*!*****************************************!*\
+  !*** ./src/components/ui/ColorList.tsx ***!
+  \*****************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _Color__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Color */ "./src/components/ui/Color.js");
-/* harmony import */ var _stylesheets_ColorList_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../stylesheets/ColorList.scss */ "./stylesheets/ColorList.scss");
-/* harmony import */ var _stylesheets_ColorList_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_stylesheets_ColorList_scss__WEBPACK_IMPORTED_MODULE_2__);
-function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
+/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _Color__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Color */ "./src/components/ui/Color.js");
+/* harmony import */ var _stylesheets_ColorList_scss__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../stylesheets/ColorList.scss */ "./stylesheets/ColorList.scss");
+/* harmony import */ var _stylesheets_ColorList_scss__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_stylesheets_ColorList_scss__WEBPACK_IMPORTED_MODULE_3__);
 
 
 
 
-
-var ColorList = function ColorList(_ref) {
-  var _ref$colors = _ref.colors,
-      colors = _ref$colors === void 0 ? [] : _ref$colors,
-      _ref$onRate = _ref.onRate,
-      _onRate = _ref$onRate === void 0 ? function (f) {
-    return f;
-  } : _ref$onRate,
-      _ref$onRemove = _ref.onRemove,
-      _onRemove = _ref$onRemove === void 0 ? function (f) {
-    return f;
-  } : _ref$onRemove;
-
-  return React.createElement("div", {
-    className: "color-list"
-  }, colors.length === 0 ? React.createElement("p", null, "No Colors Listed. (Add a Color)") : colors.map(function (color) {
-    return React.createElement(_Color__WEBPACK_IMPORTED_MODULE_1__["default"], _extends({
-      key: color.id
-    }, color, {
-      onRate: function onRate(rating) {
-        return _onRate(color.id, rating);
-      },
-      onRemove: function onRemove() {
-        return _onRemove(color.id);
-      }
-    }));
-  }));
-};
-
+const ColorList = ({ colors = [], onRate = (f) => f, onRemove = (f) => f }) => react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "color-list" }, (colors.length === 0) ?
+    react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("p", null, "No Colors Listed. (Add a Color)") :
+    colors.map(color => react__WEBPACK_IMPORTED_MODULE_0__["createElement"](_Color__WEBPACK_IMPORTED_MODULE_2__["default"], Object.assign({ key: color.id }, color, { onRate: (rating) => onRate(color.id, rating), onRemove: () => onRemove(color.id) }))));
 ColorList.propTypes = {
-  colors: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.array,
-  onRate: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.func,
-  onRemove: prop_types__WEBPACK_IMPORTED_MODULE_0___default.a.func
+    colors: prop_types__WEBPACK_IMPORTED_MODULE_1__["array"],
+    onRate: prop_types__WEBPACK_IMPORTED_MODULE_1__["func"],
+    onRemove: prop_types__WEBPACK_IMPORTED_MODULE_1__["func"]
 };
 /* harmony default export */ __webpack_exports__["default"] = (ColorList);
+
 
 /***/ }),
 

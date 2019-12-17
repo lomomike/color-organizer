@@ -1,15 +1,26 @@
-import PropTypes from 'prop-types'
+import * as React from 'react'
+import * as PropTypes from 'prop-types'
 import Color from './Color'
 import '../../../stylesheets/ColorList.scss'
 
-const ColorList = ({ colors=[], onRate=f=>f, onRemove=f=>f }) =>
+interface Color {
+    id : string
+}
+
+interface ColorListProps {
+    colors: Color[],
+    onRate: Function,
+    onRemove: Function    
+}
+
+const ColorList = ({ colors=[], onRate=(f : any) => f, onRemove= (f: any) => f } : ColorListProps ) =>
     <div className="color-list">
         {(colors.length === 0) ?
             <p>No Colors Listed. (Add a Color)</p> :
             colors.map(color =>
                 <Color key={color.id}
                     {...color}
-                       onRate={(rating) => onRate(color.id, rating)}
+                       onRate={(rating : number) => onRate(color.id, rating)}
                        onRemove={() => onRemove(color.id)} />
             )
         }
