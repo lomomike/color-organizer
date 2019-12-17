@@ -15099,7 +15099,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _StarRating__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./StarRating */ "./src/components/ui/StarRating.js");
-/* harmony import */ var _TimeAgo__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./TimeAgo */ "./src/components/ui/TimeAgo.js");
+/* harmony import */ var _TimeAgo__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./TimeAgo */ "./src/components/ui/TimeAgo.tsx");
 /* harmony import */ var react_icons_fa__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-icons/fa */ "./node_modules/react-icons/fa/index.esm.js");
 /* harmony import */ var _stylesheets_Color_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../../stylesheets/Color.scss */ "./stylesheets/Color.scss");
 /* harmony import */ var _stylesheets_Color_scss__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(_stylesheets_Color_scss__WEBPACK_IMPORTED_MODULE_6__);
@@ -15422,26 +15422,25 @@ StarRating.propTypes = {
 
 /***/ }),
 
-/***/ "./src/components/ui/TimeAgo.js":
-/*!**************************************!*\
-  !*** ./src/components/ui/TimeAgo.js ***!
-  \**************************************/
+/***/ "./src/components/ui/TimeAgo.tsx":
+/*!***************************************!*\
+  !*** ./src/components/ui/TimeAgo.tsx ***!
+  \***************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _lib_time_helpers__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../lib/time-helpers */ "./src/lib/time-helpers.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _lib_time_helpers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../lib/time-helpers */ "./src/lib/time-helpers.js");
 
 
-var TimeAgo = function TimeAgo(_ref) {
-  var timestamp = _ref.timestamp;
-  return React.createElement("div", {
-    className: "time-ago"
-  }, Object(_lib_time_helpers__WEBPACK_IMPORTED_MODULE_0__["ago"])(timestamp));
+const TimeAgo = ({ timestamp }) => {
+    return react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("div", { className: "time-ago" }, Object(_lib_time_helpers__WEBPACK_IMPORTED_MODULE_1__["ago"])(timestamp));
 };
-
 /* harmony default export */ __webpack_exports__["default"] = (TimeAgo);
+
 
 /***/ }),
 
