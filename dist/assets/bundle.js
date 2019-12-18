@@ -14943,7 +14943,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var _ui_ColorList__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ui/ColorList */ "./src/components/ui/ColorList.tsx");
 /* harmony import */ var _ui_ColorDetails__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ui/ColorDetails */ "./src/components/ui/ColorDetails.tsx");
-/* harmony import */ var _ui_AddColorForm__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ui/AddColorForm */ "./src/components/ui/AddColorForm.js");
+/* harmony import */ var _ui_AddColorForm__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ui/AddColorForm */ "./src/components/ui/AddColorForm.tsx");
 /* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../actions */ "./src/actions.js");
 /* harmony import */ var _lib_array_helpers__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../lib/array-helpers */ "./src/lib/array-helpers.js");
 
@@ -14984,10 +14984,10 @@ var Color = Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(function
 
 /***/ }),
 
-/***/ "./src/components/ui/AddColorForm.js":
-/*!*******************************************!*\
-  !*** ./src/components/ui/AddColorForm.js ***!
-  \*******************************************/
+/***/ "./src/components/ui/AddColorForm.tsx":
+/*!********************************************!*\
+  !*** ./src/components/ui/AddColorForm.tsx ***!
+  \********************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -14995,92 +14995,39 @@ var Color = Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(function
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! prop-types */ "./node_modules/prop-types/index.js");
-/* harmony import */ var prop_types__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(prop_types__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _stylesheets_AddColorForm_scss__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../stylesheets/AddColorForm.scss */ "./stylesheets/AddColorForm.scss");
-/* harmony import */ var _stylesheets_AddColorForm_scss__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_stylesheets_AddColorForm_scss__WEBPACK_IMPORTED_MODULE_2__);
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
-
-function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
-
-function _possibleConstructorReturn(self, call) { if (call && (_typeof(call) === "object" || typeof call === "function")) { return call; } return _assertThisInitialized(self); }
-
-function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf(o) { return o.__proto__ || Object.getPrototypeOf(o); }; return _getPrototypeOf(o); }
-
-function _assertThisInitialized(self) { if (self === void 0) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function"); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, writable: true, configurable: true } }); if (superClass) _setPrototypeOf(subClass, superClass); }
-
-function _setPrototypeOf(o, p) { _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) { o.__proto__ = p; return o; }; return _setPrototypeOf(o, p); }
+/* harmony import */ var _stylesheets_AddColorForm_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../stylesheets/AddColorForm.scss */ "./stylesheets/AddColorForm.scss");
+/* harmony import */ var _stylesheets_AddColorForm_scss__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_stylesheets_AddColorForm_scss__WEBPACK_IMPORTED_MODULE_1__);
 
 
-
-
-
-var AddColorForm =
-/*#__PURE__*/
-function (_Component) {
-  _inherits(AddColorForm, _Component);
-
-  function AddColorForm(props) {
-    var _this;
-
-    _classCallCheck(this, AddColorForm);
-
-    _this = _possibleConstructorReturn(this, _getPrototypeOf(AddColorForm).call(this, props));
-    _this.submit = _this.submit.bind(_assertThisInitialized(_this));
-    return _this;
-  }
-
-  _createClass(AddColorForm, [{
-    key: "submit",
-    value: function submit(e) {
-      var _this$refs = this.refs,
-          _title = _this$refs._title,
-          _color = _this$refs._color;
-      var onNewColor = this.props.onNewColor;
-      e.preventDefault();
-      onNewColor(_title.value, _color.value);
-      _title.value = '';
-      _color.value = '#000000';
-
-      _title.focus();
+class AddColorForm extends react__WEBPACK_IMPORTED_MODULE_0__["Component"] {
+    constructor(props) {
+        super(props);
+        this._title = react__WEBPACK_IMPORTED_MODULE_0__["createRef"]();
+        this._color = react__WEBPACK_IMPORTED_MODULE_0__["createRef"]();
+        this.submit = this.submit.bind(this);
     }
-  }, {
-    key: "render",
-    value: function render() {
-      return React.createElement("form", {
-        className: "add-color",
-        onSubmit: this.submit
-      }, React.createElement("input", {
-        ref: "_title",
-        type: "text",
-        placeholder: "color title...",
-        required: true
-      }), React.createElement("input", {
-        ref: "_color",
-        type: "color",
-        required: true
-      }), React.createElement("button", null, "ADD"));
+    submit(e) {
+        const { onNewColor } = this.props;
+        const title = this._title.current;
+        const color = this._color.current;
+        e.preventDefault();
+        onNewColor(title.value, color.value);
+        title.value = '';
+        color.value = '#000000';
+        title.focus();
     }
-  }]);
-
-  return AddColorForm;
-}(react__WEBPACK_IMPORTED_MODULE_0__["Component"]);
-
-AddColorForm.propTypes = {
-  onNewColor: prop_types__WEBPACK_IMPORTED_MODULE_1___default.a.func
-};
+    render() {
+        return (react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("form", { className: "add-color", onSubmit: this.submit },
+            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", { ref: this._title, type: "text", placeholder: "color title...", required: true }),
+            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("input", { ref: this._color, type: "color", required: true }),
+            react__WEBPACK_IMPORTED_MODULE_0__["createElement"]("button", null, "ADD")));
+    }
+}
 AddColorForm.defaultProps = {
-  onNewColor: function onNewColor(f) {
-    return f;
-  }
+    onNewColor: f => f
 };
 /* harmony default export */ __webpack_exports__["default"] = (AddColorForm);
+
 
 /***/ }),
 
