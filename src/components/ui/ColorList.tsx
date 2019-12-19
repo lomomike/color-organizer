@@ -1,14 +1,10 @@
 import * as React from 'react'
 import * as PropTypes from 'prop-types'
-import Color from './Color'
+import Color, { ColorProps } from './Color'
 import '../../../stylesheets/ColorList.scss'
 
-interface Color {
-    id : string
-}
-
 interface ColorListProps {
-    colors: Color[],
+    colors: ColorProps[],
     onRate: Function,
     onRemove: Function    
 }

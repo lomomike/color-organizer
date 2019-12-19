@@ -6,8 +6,8 @@ import TimeAgo from './TimeAgo'
 import '../../../stylesheets/Color.scss'
 import { History } from 'history'
 
-type ColorProps = RouteComponentProps<any> & {
-    id : any,
+export interface ColorProps {
+    id : string,
     title: string,
     color: string,
     rating: number,
@@ -17,7 +17,9 @@ type ColorProps = RouteComponentProps<any> & {
     history: History
 }
 
-class Color extends React.Component<ColorProps> {
+type ColorRouteProps = RouteComponentProps<any> & ColorProps
+
+class Color extends React.Component<ColorRouteProps> {
 
     render() {
         const { id, title, color, rating, timestamp, onRemove, onRate, history } = this.props
