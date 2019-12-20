@@ -1,4 +1,4 @@
-import {createStore, combineReducers, applyMiddleware} from 'redux'
+import {createStore, combineReducers, applyMiddleware, compose} from 'redux'
 import { colors } from './reducers'
 import { stateData } from '../../data/initialState'
 
@@ -21,8 +21,13 @@ const saver = store => next => action => {
     return result
 }
 
+const composeEnhancers =
+  typeof window === 'object' &&
+  window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?   
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({}) : compose;
+
 const storeFactory = (initialState=stateData) =>
-    applyMiddleware(logger, saver)(createStore)(
+    composeEnhancers(applyMiddleware(logger, saver))(createStore)(
         combineReducers({colors }),
         (localStorage['redux-store']) ?
             JSON.parse(localStorage['redux-store']) :
