@@ -7019,45 +7019,52 @@ module.exports = function(originalModule) {
 
 /***/ }),
 
-/***/ "./src/actions.js":
+/***/ "./src/actions.ts":
 /*!************************!*\
-  !*** ./src/actions.js ***!
+  !*** ./src/actions.ts ***!
   \************************/
-/*! exports provided: addColor, removeColor, rateColor */
+/*! exports provided: AddColor, RemoveColor, RateColor, addColor, removeColor, rateColor */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AddColor", function() { return AddColor; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RemoveColor", function() { return RemoveColor; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RateColor", function() { return RateColor; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addColor", function() { return addColor; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removeColor", function() { return removeColor; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "rateColor", function() { return rateColor; });
-/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./constants */ "./src/constants.js");
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./constants */ "./src/constants.ts");
 /* harmony import */ var uuid__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! uuid */ "./node_modules/uuid/index.js");
 /* harmony import */ var uuid__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(uuid__WEBPACK_IMPORTED_MODULE_1__);
 
 
-var addColor = function addColor(title, color) {
-  return {
-    type: _constants__WEBPACK_IMPORTED_MODULE_0__["default"].ADD_COLOR,
-    id: Object(uuid__WEBPACK_IMPORTED_MODULE_1__["v4"])(),
-    title: title,
-    color: color,
-    timestamp: new Date().toString()
-  };
-};
-var removeColor = function removeColor(id) {
-  return {
-    type: _constants__WEBPACK_IMPORTED_MODULE_0__["default"].REMOVE_COLOR,
-    id: id
-  };
-};
-var rateColor = function rateColor(id, rating) {
-  return {
-    type: _constants__WEBPACK_IMPORTED_MODULE_0__["default"].RATE_COLOR,
-    id: id,
-    rating: rating
-  };
-};
+class AddColor {
+    constructor(type, id, title, color, timestamp) {
+        this.type = type;
+        this.id = id;
+        this.title = title;
+        this.color = color;
+        this.timestamp = timestamp;
+    }
+}
+class RemoveColor {
+    constructor(type, id) {
+        this.type = type;
+        this.id = id;
+    }
+}
+class RateColor {
+    constructor(type, id, rating) {
+        this.type = type;
+        this.id = id;
+        this.rating = rating;
+    }
+}
+const addColor = (title, color) => (new AddColor(_constants__WEBPACK_IMPORTED_MODULE_0__["default"].ADD_COLOR, Object(uuid__WEBPACK_IMPORTED_MODULE_1__["v4"])(), title, color, new Date().toString()));
+const removeColor = (id) => (new RemoveColor(_constants__WEBPACK_IMPORTED_MODULE_0__["default"].REMOVE_COLOR, id));
+const rateColor = (id, rating) => (new RateColor(_constants__WEBPACK_IMPORTED_MODULE_0__["default"].RATE_COLOR, id, rating));
+
 
 /***/ }),
 
@@ -7128,7 +7135,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ui_ColorList__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ui/ColorList */ "./src/components/ui/ColorList.tsx");
 /* harmony import */ var _ui_ColorDetails__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ui/ColorDetails */ "./src/components/ui/ColorDetails.tsx");
 /* harmony import */ var _ui_AddColorForm__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ui/AddColorForm */ "./src/components/ui/AddColorForm.tsx");
-/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../actions */ "./src/actions.js");
+/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../actions */ "./src/actions.ts");
 /* harmony import */ var _lib_array_helpers__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../lib/array-helpers */ "./src/lib/array-helpers.js");
 
 
@@ -7444,21 +7451,22 @@ const Whoops404 = (props) => react__WEBPACK_IMPORTED_MODULE_0__["createElement"]
 
 /***/ }),
 
-/***/ "./src/constants.js":
+/***/ "./src/constants.ts":
 /*!**************************!*\
-  !*** ./src/constants.js ***!
+  !*** ./src/constants.ts ***!
   \**************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-var constants = {
-  ADD_COLOR: "ADD_COLOR",
-  RATE_COLOR: "RATE_COLOR",
-  REMOVE_COLOR: "REMOVE_COLOR"
+const constants = {
+    ADD_COLOR: "ADD_COLOR",
+    RATE_COLOR: "RATE_COLOR",
+    REMOVE_COLOR: "REMOVE_COLOR"
 };
 /* harmony default export */ __webpack_exports__["default"] = (constants);
+
 
 /***/ }),
 
@@ -7478,7 +7486,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _components_App__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/App */ "./src/components/App.js");
-/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./store */ "./src/store/index.js");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./store */ "./src/store/index.ts");
 
 
 
@@ -7665,9 +7673,9 @@ var ago = function ago(timestamp) {
 
 /***/ }),
 
-/***/ "./src/store/index.js":
+/***/ "./src/store/index.ts":
 /*!****************************!*\
-  !*** ./src/store/index.js ***!
+  !*** ./src/store/index.ts ***!
   \****************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -7675,53 +7683,41 @@ var ago = function ago(timestamp) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
-/* harmony import */ var _reducers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./reducers */ "./src/store/reducers.js");
+/* harmony import */ var _reducers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./reducers */ "./src/store/reducers.ts");
 /* harmony import */ var _data_initialState__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../data/initialState */ "./data/initialState.json");
 var _data_initialState__WEBPACK_IMPORTED_MODULE_2___namespace = /*#__PURE__*/__webpack_require__.t(/*! ../../data/initialState */ "./data/initialState.json", 1);
 
 
 
-var console = window.console;
-
-var logger = function logger(store) {
-  return function (next) {
-    return function (action) {
-      var result;
-      console.groupCollapsed("dispatching", action.type);
-      console.log('prev state', store.getState());
-      console.log('action', action);
-      result = next(action);
-      console.log('next state', store.getState());
-      console.groupEnd();
-      return result;
-    };
-  };
+let console = window.console;
+const logger = (store) => (next) => (action) => {
+    console.groupCollapsed("dispatching", action.type);
+    console.log('prev state', store.getState());
+    console.log('action', action);
+    const result = next(action);
+    console.log('next state', store.getState());
+    console.groupEnd();
+    return result;
 };
-
-var saver = function saver(store) {
-  return function (next) {
-    return function (action) {
-      var result = next(action);
-      localStorage['redux-store'] = JSON.stringify(store.getState());
-      return result;
-    };
-  };
+const saver = (store) => (next) => (action) => {
+    let result = next(action);
+    localStorage['redux-store'] = JSON.stringify(store.getState());
+    return result;
 };
-
-var storeFactory = function storeFactory() {
-  var initialState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _data_initialState__WEBPACK_IMPORTED_MODULE_2__["stateData"];
-  return Object(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"])(logger, saver)(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
-    colors: _reducers__WEBPACK_IMPORTED_MODULE_1__["colors"]
-  }), localStorage['redux-store'] ? JSON.parse(localStorage['redux-store']) : initialState);
-};
-
+const composeEnhancers = typeof window === 'object' &&
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__(() => { }) : redux__WEBPACK_IMPORTED_MODULE_0__["compose"];
+const storeFactory = (initialState = _data_initialState__WEBPACK_IMPORTED_MODULE_2___namespace) => composeEnhancers(Object(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"])(logger, saver))(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({ colors: _reducers__WEBPACK_IMPORTED_MODULE_1__["colors"] }), (localStorage['redux-store']) ?
+    JSON.parse(localStorage['redux-store']) :
+    initialState);
 /* harmony default export */ __webpack_exports__["default"] = (storeFactory);
+
 
 /***/ }),
 
-/***/ "./src/store/reducers.js":
+/***/ "./src/store/reducers.ts":
 /*!*******************************!*\
-  !*** ./src/store/reducers.js ***!
+  !*** ./src/store/reducers.ts ***!
   \*******************************/
 /*! exports provided: color, colors */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -7730,71 +7726,41 @@ var storeFactory = function storeFactory() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "color", function() { return color; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "colors", function() { return colors; });
-/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants */ "./src/constants.js");
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants */ "./src/constants.ts");
 
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
-
-function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
-
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
-
-var color = function color() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-  var action = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {
-    type: null
-  };
-
-  switch (action.type) {
-    case _constants__WEBPACK_IMPORTED_MODULE_0__["default"].ADD_COLOR:
-      return {
-        id: action.id,
-        title: action.title,
-        color: action.color,
-        timestamp: action.timestamp,
-        rating: 0
-      };
-
-    case _constants__WEBPACK_IMPORTED_MODULE_0__["default"].RATE_COLOR:
-      return state.id !== action.id ? state : _objectSpread({}, state, {
-        rating: action.rating
-      });
-
-    default:
-      return state;
-  }
+const color = (state = {}, action) => {
+    switch (action.type) {
+        case _constants__WEBPACK_IMPORTED_MODULE_0__["default"].ADD_COLOR:
+            return {
+                id: action.id,
+                title: action.title,
+                color: action.color,
+                timestamp: action.timestamp,
+                rating: 0
+            };
+        case _constants__WEBPACK_IMPORTED_MODULE_0__["default"].RATE_COLOR:
+            return (state.id !== action.id) ?
+                state : Object.assign(Object.assign({}, state), { rating: action.rating });
+        default:
+            return state;
+    }
 };
-var colors = function colors() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-  var action = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {
-    type: null
-  };
-
-  switch (action.type) {
-    case _constants__WEBPACK_IMPORTED_MODULE_0__["default"].ADD_COLOR:
-      return [].concat(_toConsumableArray(state), [color({}, action)]);
-
-    case _constants__WEBPACK_IMPORTED_MODULE_0__["default"].RATE_COLOR:
-      return state.map(function (c) {
-        return color(c, action);
-      });
-
-    case _constants__WEBPACK_IMPORTED_MODULE_0__["default"].REMOVE_COLOR:
-      return state.filter(function (c) {
-        return c.id !== action.id;
-      });
-
-    default:
-      return state;
-  }
+const colors = (state = [], action) => {
+    switch (action.type) {
+        case _constants__WEBPACK_IMPORTED_MODULE_0__["default"].ADD_COLOR:
+            return [
+                ...state,
+                color({}, action)
+            ];
+        case _constants__WEBPACK_IMPORTED_MODULE_0__["default"].RATE_COLOR:
+            return state.map(c => color(c, action));
+        case _constants__WEBPACK_IMPORTED_MODULE_0__["default"].REMOVE_COLOR:
+            return state.filter(c => c.id !== action.id);
+        default:
+            return state;
+    }
 };
+
 
 /***/ }),
 

@@ -1,6 +1,9 @@
 import C from '../constants'
+import {AddColor, RemoveColor, RateColor} from '../actions'
 
-export const color = (state = {}, action = { type: null}) => {
+export type Action = AddColor & RemoveColor & RateColor & { type : string }
+
+export const color = (state: any = {}, action : Action) : any => {
     switch (action.type) {
         case C.ADD_COLOR: 
             return {
@@ -22,7 +25,7 @@ export const color = (state = {}, action = { type: null}) => {
     }
 }
 
-export const colors = (state = [], action = {type: null}) => {
+export const colors = (state : any[] = [], action : Action) : any => {
     switch (action.type) {
         case C.ADD_COLOR : 
             return [
