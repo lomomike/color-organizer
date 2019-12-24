@@ -8,7 +8,7 @@ export const addColor = (title : string, color : string) : AddColor=>
         id: v4(),
         title,
         color,
-        timestamp: new Date().toString()        
+        timestamp: new Date().toString()
     })
 
 export const removeColor = (id: string) : RemoveColor => 

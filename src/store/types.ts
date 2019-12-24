@@ -4,6 +4,8 @@ export class ColorState {
     color: string
     rating: number
     timestamp: string
+
+    constructor() {}
 }
 
 export class State {

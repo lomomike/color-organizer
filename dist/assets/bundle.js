@@ -7671,7 +7671,7 @@ var ago = function ago(timestamp) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
-/* harmony import */ var _reducers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./reducers */ "./src/store/reducers.js");
+/* harmony import */ var _reducers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./reducers */ "./src/store/reducers.ts");
 /* harmony import */ var _data_initialState__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../data/initialState */ "./data/initialState.json");
 var _data_initialState__WEBPACK_IMPORTED_MODULE_2___namespace = /*#__PURE__*/__webpack_require__.t(/*! ../../data/initialState */ "./data/initialState.json", 1);
 function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
@@ -7719,9 +7719,9 @@ var storeFactory = function storeFactory() {
 
 /***/ }),
 
-/***/ "./src/store/reducers.js":
+/***/ "./src/store/reducers.ts":
 /*!*******************************!*\
-  !*** ./src/store/reducers.js ***!
+  !*** ./src/store/reducers.ts ***!
   \*******************************/
 /*! exports provided: color, colors */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -7731,70 +7731,90 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "color", function() { return color; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "colors", function() { return colors; });
 /* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants */ "./src/constants.ts");
-function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
-
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
-
-function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
-
-function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
-
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
-
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+/* harmony import */ var _types__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./types */ "./src/store/types.ts");
 
 
-var color = function color() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
-  var action = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {
-    type: null
-  };
-
-  switch (action.type) {
-    case _constants__WEBPACK_IMPORTED_MODULE_0__["default"].ADD_COLOR:
-      return {
-        id: action.id,
-        title: action.title,
-        color: action.color,
-        timestamp: action.timestamp,
-        rating: 0
-      };
-
-    case _constants__WEBPACK_IMPORTED_MODULE_0__["default"].RATE_COLOR:
-      return state.id !== action.id ? state : _objectSpread({}, state, {
-        rating: action.rating
-      });
-
-    default:
-      return state;
-  }
+const color = (state, action = { type: null }) => {
+    switch (action.type) {
+        case _constants__WEBPACK_IMPORTED_MODULE_0__["default"].ADD_COLOR:
+            const addColor = action;
+            return {
+                id: addColor.id,
+                title: addColor.title,
+                color: addColor.color,
+                timestamp: addColor.timestamp,
+                rating: 0
+            };
+        case _constants__WEBPACK_IMPORTED_MODULE_0__["default"].RATE_COLOR:
+            const rateColor = action;
+            return (state.id !== rateColor.id) ?
+                state : Object.assign(Object.assign({}, state), { rating: rateColor.rating });
+        default:
+            return state;
+    }
 };
-var colors = function colors() {
-  var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
-  var action = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {
-    type: null
-  };
-
-  switch (action.type) {
-    case _constants__WEBPACK_IMPORTED_MODULE_0__["default"].ADD_COLOR:
-      return [].concat(_toConsumableArray(state), [color({}, action)]);
-
-    case _constants__WEBPACK_IMPORTED_MODULE_0__["default"].RATE_COLOR:
-      return state.map(function (c) {
-        return color(c, action);
-      });
-
-    case _constants__WEBPACK_IMPORTED_MODULE_0__["default"].REMOVE_COLOR:
-      return state.filter(function (c) {
-        return c.id !== action.id;
-      });
-
-    default:
-      return state;
-  }
+const colors = (state = [], action = { type: null }) => {
+    switch (action.type) {
+        case _constants__WEBPACK_IMPORTED_MODULE_0__["default"].ADD_COLOR:
+            return [
+                ...state,
+                color(new _types__WEBPACK_IMPORTED_MODULE_1__["ColorState"](), action)
+            ];
+        case _constants__WEBPACK_IMPORTED_MODULE_0__["default"].RATE_COLOR:
+            return state.map(c => color(c, action));
+        case _constants__WEBPACK_IMPORTED_MODULE_0__["default"].REMOVE_COLOR:
+            const removeColor = action;
+            return state.filter(c => c.id !== removeColor.id);
+        default:
+            return state;
+    }
 };
+
+
+/***/ }),
+
+/***/ "./src/store/types.ts":
+/*!****************************!*\
+  !*** ./src/store/types.ts ***!
+  \****************************/
+/*! exports provided: ColorState, State, AddColor, RemoveColor, RateColor */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ColorState", function() { return ColorState; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "State", function() { return State; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AddColor", function() { return AddColor; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RemoveColor", function() { return RemoveColor; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RateColor", function() { return RateColor; });
+class ColorState {
+    constructor() { }
+}
+class State {
+}
+class AddColor {
+    constructor(type, id, title, color, timestamp) {
+        this.type = type;
+        this.id = id;
+        this.title = title;
+        this.color = color;
+        this.timestamp = timestamp;
+    }
+}
+class RemoveColor {
+    constructor(type, id) {
+        this.type = type;
+        this.id = id;
+    }
+}
+class RateColor {
+    constructor(type, id, rating) {
+        this.type = type;
+        this.id = id;
+        this.rating = rating;
+    }
+}
+
 
 /***/ }),
 
