@@ -7019,9 +7019,9 @@ module.exports = function(originalModule) {
 
 /***/ }),
 
-/***/ "./src/actions.js":
+/***/ "./src/actions.ts":
 /*!************************!*\
-  !*** ./src/actions.js ***!
+  !*** ./src/actions.ts ***!
   \************************/
 /*! exports provided: addColor, removeColor, rateColor */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -7031,33 +7031,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "addColor", function() { return addColor; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "removeColor", function() { return removeColor; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "rateColor", function() { return rateColor; });
-/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./constants */ "./src/constants.js");
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./constants */ "./src/constants.ts");
 /* harmony import */ var uuid__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! uuid */ "./node_modules/uuid/index.js");
 /* harmony import */ var uuid__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(uuid__WEBPACK_IMPORTED_MODULE_1__);
 
 
-var addColor = function addColor(title, color) {
-  return {
+const addColor = (title, color) => ({
     type: _constants__WEBPACK_IMPORTED_MODULE_0__["default"].ADD_COLOR,
     id: Object(uuid__WEBPACK_IMPORTED_MODULE_1__["v4"])(),
-    title: title,
-    color: color,
+    title,
+    color,
     timestamp: new Date().toString()
-  };
-};
-var removeColor = function removeColor(id) {
-  return {
+});
+const removeColor = (id) => ({
     type: _constants__WEBPACK_IMPORTED_MODULE_0__["default"].REMOVE_COLOR,
-    id: id
-  };
-};
-var rateColor = function rateColor(id, rating) {
-  return {
+    id
+});
+const rateColor = (id, rating) => ({
     type: _constants__WEBPACK_IMPORTED_MODULE_0__["default"].RATE_COLOR,
-    id: id,
-    rating: rating
-  };
-};
+    id,
+    rating
+});
+
 
 /***/ }),
 
@@ -7128,7 +7123,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ui_ColorList__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ui/ColorList */ "./src/components/ui/ColorList.tsx");
 /* harmony import */ var _ui_ColorDetails__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ui/ColorDetails */ "./src/components/ui/ColorDetails.tsx");
 /* harmony import */ var _ui_AddColorForm__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ui/AddColorForm */ "./src/components/ui/AddColorForm.tsx");
-/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../actions */ "./src/actions.js");
+/* harmony import */ var _actions__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../actions */ "./src/actions.ts");
 /* harmony import */ var _lib_array_helpers__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../lib/array-helpers */ "./src/lib/array-helpers.js");
 
 
@@ -7444,21 +7439,22 @@ const Whoops404 = (props) => react__WEBPACK_IMPORTED_MODULE_0__["createElement"]
 
 /***/ }),
 
-/***/ "./src/constants.js":
+/***/ "./src/constants.ts":
 /*!**************************!*\
-  !*** ./src/constants.js ***!
+  !*** ./src/constants.ts ***!
   \**************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-var constants = {
-  ADD_COLOR: "ADD_COLOR",
-  RATE_COLOR: "RATE_COLOR",
-  REMOVE_COLOR: "REMOVE_COLOR"
+const constants = {
+    ADD_COLOR: "ADD_COLOR",
+    RATE_COLOR: "RATE_COLOR",
+    REMOVE_COLOR: "REMOVE_COLOR"
 };
 /* harmony default export */ __webpack_exports__["default"] = (constants);
+
 
 /***/ }),
 
@@ -7678,6 +7674,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _reducers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./reducers */ "./src/store/reducers.js");
 /* harmony import */ var _data_initialState__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../data/initialState */ "./data/initialState.json");
 var _data_initialState__WEBPACK_IMPORTED_MODULE_2___namespace = /*#__PURE__*/__webpack_require__.t(/*! ../../data/initialState */ "./data/initialState.json", 1);
+function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+
 
 
 
@@ -7708,9 +7706,11 @@ var saver = function saver(store) {
   };
 };
 
+var composeEnhancers = (typeof window === "undefined" ? "undefined" : _typeof(window)) === 'object' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({}) : redux__WEBPACK_IMPORTED_MODULE_0__["compose"];
+
 var storeFactory = function storeFactory() {
   var initialState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _data_initialState__WEBPACK_IMPORTED_MODULE_2__["stateData"];
-  return Object(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"])(logger, saver)(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
+  return composeEnhancers(Object(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"])(logger, saver))(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
     colors: _reducers__WEBPACK_IMPORTED_MODULE_1__["colors"]
   }), localStorage['redux-store'] ? JSON.parse(localStorage['redux-store']) : initialState);
 };
@@ -7730,7 +7730,7 @@ var storeFactory = function storeFactory() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "color", function() { return color; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "colors", function() { return colors; });
-/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants */ "./src/constants.js");
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../constants */ "./src/constants.ts");
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance"); }
