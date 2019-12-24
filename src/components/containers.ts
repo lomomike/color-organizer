@@ -3,8 +3,8 @@ import ColorList from './ui/ColorList'
 import ColorDetails from './ui/ColorDetails'
 import AddColorForm from './ui/AddColorForm'
 import { addColor, rateColor, removeColor } from '../actions'
-import { findById } from '../lib/array-helpers'
-import { sortColors } from '../lib/array-helpers'
+import { sortColors, findById } from '../lib/array-helpers'
+import { State } from '../store/types'
 
 export const NewColor = connect(
     null,
@@ -16,8 +16,9 @@ export const NewColor = connect(
         })
 )(AddColorForm)
 
+
 export const Colors = connect(
-    ({colors}, {match}) =>
+    ({colors } : State, {match} : any) =>
         ({
             colors: sortColors(colors, match.params.sort)
         }),
@@ -33,5 +34,5 @@ export const Colors = connect(
 )(ColorList)
 
 export const Color = connect(
-    ({ colors }, { match }) => findById(colors, match.params.id)
+    ({ colors } : State, { match } : any) => findById(colors, match.params.id)
 )(ColorDetails)

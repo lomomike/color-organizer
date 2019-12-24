@@ -7057,7 +7057,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _ui_Menu__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ui/Menu */ "./src/components/ui/Menu.tsx");
 /* harmony import */ var _ui_Whoops404__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ui/Whoops404 */ "./src/components/ui/Whoops404.tsx");
-/* harmony import */ var _containers__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./containers */ "./src/components/containers.js");
+/* harmony import */ var _containers__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./containers */ "./src/components/containers.ts");
 /* harmony import */ var _stylesheets_APP_scss__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../stylesheets/APP.scss */ "./stylesheets/APP.scss");
 /* harmony import */ var _stylesheets_APP_scss__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_stylesheets_APP_scss__WEBPACK_IMPORTED_MODULE_4__);
 
@@ -7096,9 +7096,9 @@ var App = function App() {
 
 /***/ }),
 
-/***/ "./src/components/containers.js":
+/***/ "./src/components/containers.ts":
 /*!**************************************!*\
-  !*** ./src/components/containers.js ***!
+  !*** ./src/components/containers.ts ***!
   \**************************************/
 /*! exports provided: NewColor, Colors, Color */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -7120,35 +7120,23 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-var NewColor = Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(null, function (dispatch) {
-  return {
-    onNewColor: function onNewColor(title, color) {
-      dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_4__["addColor"])(title, color));
+const NewColor = Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(null, dispatch => ({
+    onNewColor(title, color) {
+        dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_4__["addColor"])(title, color));
     }
-  };
-})(_ui_AddColorForm__WEBPACK_IMPORTED_MODULE_3__["default"]);
-var Colors = Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(function (_ref, _ref2) {
-  var colors = _ref.colors;
-  var match = _ref2.match;
-  return {
+}))(_ui_AddColorForm__WEBPACK_IMPORTED_MODULE_3__["default"]);
+const Colors = Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(({ colors }, { match }) => ({
     colors: Object(_lib_array_helpers__WEBPACK_IMPORTED_MODULE_5__["sortColors"])(colors, match.params.sort)
-  };
-}, function (dispatch) {
-  return {
-    onRemove: function onRemove(id) {
-      dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_4__["removeColor"])(id));
+}), dispatch => ({
+    onRemove(id) {
+        dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_4__["removeColor"])(id));
     },
-    onRate: function onRate(id, rating) {
-      dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_4__["rateColor"])(id, rating));
+    onRate(id, rating) {
+        dispatch(Object(_actions__WEBPACK_IMPORTED_MODULE_4__["rateColor"])(id, rating));
     }
-  };
-})(_ui_ColorList__WEBPACK_IMPORTED_MODULE_1__["default"]);
-var Color = Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(function (_ref3, _ref4) {
-  var colors = _ref3.colors;
-  var match = _ref4.match;
-  return Object(_lib_array_helpers__WEBPACK_IMPORTED_MODULE_5__["findById"])(colors, match.params.id);
-})(_ui_ColorDetails__WEBPACK_IMPORTED_MODULE_2__["default"]);
+}))(_ui_ColorList__WEBPACK_IMPORTED_MODULE_1__["default"]);
+const Color = Object(react_redux__WEBPACK_IMPORTED_MODULE_0__["connect"])(({ colors }, { match }) => Object(_lib_array_helpers__WEBPACK_IMPORTED_MODULE_5__["findById"])(colors, match.params.id))(_ui_ColorDetails__WEBPACK_IMPORTED_MODULE_2__["default"]);
+
 
 /***/ }),
 
