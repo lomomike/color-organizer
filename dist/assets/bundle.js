@@ -86,17 +86,6 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./data/initialState.json":
-/*!********************************!*\
-  !*** ./data/initialState.json ***!
-  \********************************/
-/*! exports provided: colors, default */
-/***/ (function(module) {
-
-module.exports = JSON.parse("{\"colors\":[{\"id\":\"8658c1d0-9eda-4a90-95e1-8001e8eb6036\",\"title\":\"Ocean Blue\",\"color\":\"#0070ff\",\"rating\":3,\"timestamp\":\"Sat Mar 12 2016 16:12:09 GMT-0800 (PST)\"},{\"id\":\"f9005b4e-975e-433d-a646-79df172e1dbb\",\"title\":\"Tomato\",\"color\":\"#d10012\",\"rating\":2,\"timestamp\":\"Fri Mar 11 2016 12:00:00 GMT-0800 (PST)\"},{\"id\":\"58d9caee-6ea6-4d7b-9984-65b145031979\",\"title\":\"Lawn\",\"color\":\"#67bf4f\",\"rating\":1,\"timestamp\":\"Thu Mar 10 2016 01:11:12 GMT-0800 (PST)\"},{\"id\":\"a5685c39-6bdc-4727-9188-6c9a00bf7f95\",\"title\":\"Party Pink\",\"color\":\"#ff00f7\",\"rating\":5,\"timestamp\":\"Wed Mar 9 2016 03:26:00 GMT-0800 (PST)\"}]}");
-
-/***/ }),
-
 /***/ "./node_modules/@babel/runtime/helpers/esm/extends.js":
 /*!************************************************************!*\
   !*** ./node_modules/@babel/runtime/helpers/esm/extends.js ***!
@@ -7474,7 +7463,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _components_App__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/App */ "./src/components/App.js");
-/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./store */ "./src/store/index.js");
+/* harmony import */ var _store__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./store */ "./src/store/index.ts");
 
 
 
@@ -7661,9 +7650,9 @@ var ago = function ago(timestamp) {
 
 /***/ }),
 
-/***/ "./src/store/index.js":
+/***/ "./src/store/index.ts":
 /*!****************************!*\
-  !*** ./src/store/index.js ***!
+  !*** ./src/store/index.ts ***!
   \****************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -7672,50 +7661,82 @@ var ago = function ago(timestamp) {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! redux */ "./node_modules/redux/es/redux.js");
 /* harmony import */ var _reducers__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./reducers */ "./src/store/reducers.ts");
-/* harmony import */ var _data_initialState__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../data/initialState */ "./data/initialState.json");
-var _data_initialState__WEBPACK_IMPORTED_MODULE_2___namespace = /*#__PURE__*/__webpack_require__.t(/*! ../../data/initialState */ "./data/initialState.json", 1);
-function _typeof(obj) { if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") { _typeof = function _typeof(obj) { return typeof obj; }; } else { _typeof = function _typeof(obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }; } return _typeof(obj); }
+/* harmony import */ var _initialState__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./initialState */ "./src/store/initialState.ts");
 
 
 
-
-var console = window.console;
-
-var logger = function logger(store) {
-  return function (next) {
-    return function (action) {
-      var result;
-      console.groupCollapsed("dispatching", action.type);
-      console.log('prev state', store.getState());
-      console.log('action', action);
-      result = next(action);
-      console.log('next state', store.getState());
-      console.groupEnd();
-      return result;
-    };
-  };
+let console = window.console;
+const logger = (store) => (next) => (action) => {
+    console.groupCollapsed("dispatching", action.type);
+    console.log('prev state', store.getState());
+    console.log('action', action);
+    let result = next(action);
+    console.log('next state', store.getState());
+    console.groupEnd();
+    return result;
 };
-
-var saver = function saver(store) {
-  return function (next) {
-    return function (action) {
-      var result = next(action);
-      localStorage['redux-store'] = JSON.stringify(store.getState());
-      return result;
-    };
-  };
+const saver = (store) => (next) => (action) => {
+    let result = next(action);
+    localStorage['redux-store'] = JSON.stringify(store.getState());
+    return result;
 };
-
-var composeEnhancers = (typeof window === "undefined" ? "undefined" : _typeof(window)) === 'object' && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({}) : redux__WEBPACK_IMPORTED_MODULE_0__["compose"];
-
-var storeFactory = function storeFactory() {
-  var initialState = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : _data_initialState__WEBPACK_IMPORTED_MODULE_2__["stateData"];
-  return composeEnhancers(Object(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"])(logger, saver))(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({
-    colors: _reducers__WEBPACK_IMPORTED_MODULE_1__["colors"]
-  }), localStorage['redux-store'] ? JSON.parse(localStorage['redux-store']) : initialState);
-};
-
+const composeEnhancers = typeof window === 'object' &&
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : redux__WEBPACK_IMPORTED_MODULE_0__["compose"];
+const storeFactory = (initialState = _initialState__WEBPACK_IMPORTED_MODULE_2__["initialState"]) => composeEnhancers(Object(redux__WEBPACK_IMPORTED_MODULE_0__["applyMiddleware"])(logger, saver))(redux__WEBPACK_IMPORTED_MODULE_0__["createStore"])(Object(redux__WEBPACK_IMPORTED_MODULE_0__["combineReducers"])({ colors: _reducers__WEBPACK_IMPORTED_MODULE_1__["colors"] }), (localStorage['redux-store']) ?
+    JSON.parse(localStorage['redux-store']) :
+    initialState);
 /* harmony default export */ __webpack_exports__["default"] = (storeFactory);
+
+
+/***/ }),
+
+/***/ "./src/store/initialState.ts":
+/*!***********************************!*\
+  !*** ./src/store/initialState.ts ***!
+  \***********************************/
+/*! exports provided: initialState */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "initialState", function() { return initialState; });
+const initialStateAsString = `
+{
+    "colors": [
+      {
+        "id": "8658c1d0-9eda-4a90-95e1-8001e8eb6036",
+        "title": "Ocean Blue",
+        "color": "#0070ff",
+        "rating": 3,
+        "timestamp": "Sat Mar 12 2016 16:12:09 GMT-0800 (PST)"
+      },
+      {
+        "id": "f9005b4e-975e-433d-a646-79df172e1dbb",
+        "title": "Tomato",
+        "color": "#d10012",
+        "rating": 2,
+        "timestamp": "Fri Mar 11 2016 12:00:00 GMT-0800 (PST)"
+      },
+      {
+        "id": "58d9caee-6ea6-4d7b-9984-65b145031979",
+        "title": "Lawn",
+        "color": "#67bf4f",
+        "rating": 1,
+        "timestamp": "Thu Mar 10 2016 01:11:12 GMT-0800 (PST)"
+      },
+      {
+        "id": "a5685c39-6bdc-4727-9188-6c9a00bf7f95",
+        "title": "Party Pink",
+        "color": "#ff00f7",
+        "rating": 5,
+        "timestamp": "Wed Mar 9 2016 03:26:00 GMT-0800 (PST)"
+      }
+    ]
+  }
+`;
+const initialState = JSON.parse(initialStateAsString);
+
 
 /***/ }),
 
